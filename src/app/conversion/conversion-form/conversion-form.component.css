@@ -1,0 +1,20 @@
+.form-group {
+    margin-bottom: 20px;  /* Espacio adicional entre campos de formulario */
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  mat-error {
+    display: block;  /* Esto fuerza a que mat-error ocupe toda la línea */
+  }
+  
+  button {
+    margin-top: 20px;
+  }
+  
+  mat-card {
+    padding: 20px;
+    margin: 20px;
+  }

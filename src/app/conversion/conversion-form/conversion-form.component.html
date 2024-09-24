@@ -1,0 +1,47 @@
+<mat-card>
+    <form [formGroup]="conversionForm">
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Dirección Virtual</mat-label>
+          <input matInput id="virtualAddress" formControlName="virtualAddress" type="number">
+        </mat-form-field>
+        <mat-error *ngIf="conversionForm.get('virtualAddress')?.invalid && conversionForm.get('virtualAddress')?.touched">
+            <div>{{ getErrorMessage('virtualAddress') }}</div>
+        </mat-error>
+      </div>
+  
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Tamaño de Página</mat-label>
+          <input matInput id="pageSize" formControlName="pageSize" type="number">
+        </mat-form-field>
+        <mat-error *ngIf="conversionForm.get('pageSize')?.invalid && conversionForm.get('pageSize')?.touched">
+            <div>{{ getErrorMessage('pageSize') }}</div>
+        </mat-error>
+      </div>
+  
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Dirección Base</mat-label>
+          <input matInput id="baseAddress" formControlName="baseAddress" type="number">
+        </mat-form-field>
+        <mat-error *ngIf="conversionForm.get('baseAddress')?.invalid && conversionForm.get('baseAddress')?.touched">
+            <div>{{ getErrorMessage('baseAddress') }}</div>
+        </mat-error>
+      </div>
+  
+      <button mat-raised-button color="primary" type="button" (click)="convertAddress()" [disabled]="conversionForm.invalid">
+        Convertir
+      </button>
+    </form>
+    <br />
+    <br />
+    <div *ngIf="physicalAddress !== null">
+      <h3>Dirección Física Calculada: {{ physicalAddress }}</h3>
+    </div>
+  
+    <!-- Corregido: Notación con corchetes -->
+    <mat-error *ngIf="conversionForm.errors?.['invalidVirtualAddress']">
+      La dirección virtual debe ser menor que el tamaño de la página.
+    </mat-error>
+  </mat-card>
